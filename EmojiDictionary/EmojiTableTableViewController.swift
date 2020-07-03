@@ -10,17 +10,20 @@ import UIKit
 
 class EmojiTableTableViewController: UITableViewController {
     
+    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+        let tableViewEditingMode = tableView.isEditing
+        
+        tableView.setEditing(!tableViewEditingMode, animated: true)// put your table in editing mode
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationItem.leftBarButtonItem = editButtonItem// set editbuttonitem in editing mode
     }
 
-    // MARK: - Table view data source
+   
     
     override func numberOfSections(in tableView: UITableView) -> Int {
          
@@ -43,10 +46,25 @@ class EmojiTableTableViewController: UITableViewController {
         let emoji = emojis[indexPath.row]
         cell.textLabel?.text = "\(emoji.symbol) - \(emoji.name) "
         cell.detailTextLabel?.text = "\(emoji.description)"
+        cell.showsReorderControl = true // table is in editing mode
         return cell
     }
- 
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //change gray color of cell
+        let emoji = emojis[indexPath.row]
+        print("\(emoji.symbol) \(indexPath) ")
+    }
+ 
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath){ // remove the data within emojis at fromIndexPath.row
+        
+        let movedEmoji = emojis.remove(at: fromIndexPath.row)
+        emojis.insert(movedEmoji, at: to.row)
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {// to remove the delete indicator
+        return .none
+    }
     
     var emojis: [Emoji] = [Emoji(symbol: "😀", name: "Grinning Face", description: " A typicaly smiley face", usage: "happimess"),Emoji(symbol: "🤨", name: "confused Face", description: "A confuded, puzzled face", usage: "unsure what to think displeasure"),Emoji(symbol: "😍", name: "Heart eyes", description: "A smiley face with heart for eyes", usage: "love of something;attractive"),Emoji(symbol: "👮‍♀️", name: "Police officer", description: "A police officer wearing a blue cap with a gold badge", usage: "person of authority"),Emoji(symbol: "🐢", name: "Turtle", description: "A cute turtle", usage: "something slow"),Emoji(symbol: "🐘", name: "Elephant", description: "A gray elephant", usage: "good memory"),Emoji(symbol: "🍝", name: "Spaghetti", description: "A plate of spaghetti", usage: "spagheti"),Emoji(symbol: "🎲", name: "Die", description: "A single die", usage: "taking a risk, change,game"),Emoji(symbol: "⛺️", name: "Tent", description: "A small tent", usage: "camping"), Emoji(symbol: "📚", name: "Stack od books", description: "Three colores books stacked on each other", usage: "homework, stufyng"),Emoji(symbol: "💔", name: "Broken heart", description: "Ared, broken heart", usage: "extreme sadness"),Emoji(symbol: "💤", name: "Snore", description: "Three blue Z", usage: "Snore"), Emoji(symbol: "🏁", name: "Checker flag", description: "A black and white checkered flag", usage: "completion") ]
     
