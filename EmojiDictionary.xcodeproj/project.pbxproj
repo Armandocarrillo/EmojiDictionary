@@ -14,6 +14,7 @@
 		108452ED24AD7E3E00927425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 108452EC24AD7E3E00927425 /* Assets.xcassets */; };
 		108452F024AD7E3E00927425 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108452EE24AD7E3E00927425 /* LaunchScreen.storyboard */; };
 		108452F824AD7F7700927425 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108452F724AD7F7700927425 /* Emoji.swift */; };
+		10E9C13724B107490085CC8F /* EmojiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9C13624B107490085CC8F /* EmojiTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		108452EF24AD7E3E00927425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		108452F124AD7E3E00927425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		108452F724AD7F7700927425 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		10E9C13624B107490085CC8F /* EmojiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				108452F124AD7E3E00927425 /* Info.plist */,
 				108452F724AD7F7700927425 /* Emoji.swift */,
 				104C1D0A24AE2A75006B12C4 /* EmojiTableTableViewController.swift */,
+				10E9C13624B107490085CC8F /* EmojiTableViewCell.swift */,
 			);
 			path = EmojiDictionary;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				108452F824AD7F7700927425 /* Emoji.swift in Sources */,
 				104C1D0B24AE2A75006B12C4 /* EmojiTableTableViewController.swift in Sources */,
+				10E9C13724B107490085CC8F /* EmojiTableViewCell.swift in Sources */,
 				108452E424AD7E3D00927425 /* AppDelegate.swift in Sources */,
 				108452E624AD7E3D00927425 /* SceneDelegate.swift in Sources */,
 			);

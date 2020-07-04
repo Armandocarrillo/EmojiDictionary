@@ -42,11 +42,17 @@ class EmojiTableTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell", for: indexPath)
+        //step 1 Dequeue cell
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell", for: indexPath) as! EmojiTableViewCell
+        //step 2 Fetch model object to display
         let emoji = emojis[indexPath.row]
-        cell.textLabel?.text = "\(emoji.symbol) - \(emoji.name) "
-        cell.detailTextLabel?.text = "\(emoji.description)"
+        //cell.textLabel?.text = "\(emoji.symbol) - \(emoji.name) "
+        //cell.detailTextLabel?.text = "\(emoji.description)"
+        //step 3 Configure cell
+        cell.update(with: emoji)
         cell.showsReorderControl = true // table is in editing mode
+        //step 4 Return cell
         return cell
     }
     
