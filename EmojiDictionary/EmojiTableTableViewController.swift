@@ -93,8 +93,21 @@ class EmojiTableTableViewController: UITableViewController {
     }
     var emojis: [Emoji] = [Emoji(symbol: "😀", name: "Grinning Face", description: " A typicaly smiley face", usage: "happimess"),Emoji(symbol: "🤨", name: "confused Face", description: "A confuded, puzzled face", usage: "unsure what to think displeasure"),Emoji(symbol: "😍", name: "Heart eyes", description: "A smiley face with heart for eyes", usage: "love of something;attractive"),Emoji(symbol: "👮‍♀️", name: "Police officer", description: "A police officer wearing a blue cap with a gold badge", usage: "person of authority"),Emoji(symbol: "🐢", name: "Turtle", description: "A cute turtle", usage: "something slow"),Emoji(symbol: "🐘", name: "Elephant", description: "A gray elephant", usage: "good memory"),Emoji(symbol: "🍝", name: "Spaghetti", description: "A plate of spaghetti", usage: "spagheti"),Emoji(symbol: "🎲", name: "Die", description: "A single die", usage: "taking a risk, change,game"),Emoji(symbol: "⛺️", name: "Tent", description: "A small tent", usage: "camping"), Emoji(symbol: "📚", name: "Stack od books", description: "Three colores books stacked on each other", usage: "homework, stufyng"),Emoji(symbol: "💔", name: "Broken heart", description: "Ared, broken heart", usage: "extreme sadness"),Emoji(symbol: "💤", name: "Snore", description: "Three blue Z", usage: "Snore"), Emoji(symbol: "🏁", name: "Checker flag", description: "A black and white checkered flag", usage: "completion") ]
     
-    @IBAction func unwindToEmojiTableView (segue: UIStoryboardSegue ){ // method to dismiss 
+    @IBAction func unwindToEmojiTableView (segue: UIStoryboardSegue ){ // method to dismiss
+     // calculate the indexPath for the new row
+        guard segue.identifier == "saveUnwind" else { return }
+        let sourceViewController = segue.source as! AddEditEmojiTableViewController
         
+        if let emoji = sourceViewController.emoji {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow{
+                emojis[ selectedIndexPath.row] = emoji
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: emojis.count, section: 0)
+                emojis.append(emoji)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
     }
     
 }

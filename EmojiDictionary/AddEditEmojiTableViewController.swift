@@ -113,8 +113,19 @@ class AddEditEmojiTableViewController: UITableViewController {
         let usageText = usageTextField.text ?? ""
         saveButton.isEnabled = !symbolText.isEmpty && !nameText.isEmpty && !descriptionText.isEmpty && !usageText.isEmpty
     }
-    @IBAction func textEditingChanged(_ sender: UITextField){
+    @IBAction func textEditingChanged(_ sender: UITextField){//choose in connection inspector "editing changed"
         updateSaveButtonState()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // save emoji
+        super.prepare(for: segue, sender: sender)
+        guard segue.identifier == "saveUnwind" else { return }
+        
+        let symbol = symbolTextField.text ?? ""
+        let name = nameTextField.text ?? ""
+        let description = descriptionTextField.text ?? ""
+        let usage = usageTextField.text ?? ""
+        emoji = Emoji(symbol: symbol, name: name, description: description, usage: usage)
     }
     
 
