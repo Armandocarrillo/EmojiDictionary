@@ -110,6 +110,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="UJP-vy-rXP" eventType="editingChanged" id="hhP-EY-BTW"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -136,6 +139,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="UJP-vy-rXP" eventType="editingChanged" id="JvU-3d-RQs"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -156,6 +162,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="UJP-vy-rXP" eventType="editingChanged" id="VQg-hm-AOu"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -176,6 +185,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="UJP-vy-rXP" eventType="editingChanged" id="ST0-jf-RJz"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -203,6 +215,7 @@
                     <connections>
                         <outlet property="descriptionTextField" destination="Odg-3I-b7O" id="vac-oU-jq8"/>
                         <outlet property="nameTextField" destination="Sfo-Ze-Yvm" id="ZEp-iU-eOs"/>
+                        <outlet property="saveButton" destination="Tha-nF-Heu" id="IFI-7Z-UY7"/>
                         <outlet property="symbolTextField" destination="VS7-HI-vpa" id="F6g-ut-DnE"/>
                         <outlet property="usageTextField" destination="7rR-6K-Mrn" id="dvw-ha-poE"/>
                     </connections>

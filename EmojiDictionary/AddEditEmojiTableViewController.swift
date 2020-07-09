@@ -13,6 +13,8 @@ class AddEditEmojiTableViewController: UITableViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var usageTextField: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     
     var emoji: Emoji! = nil
     override func viewDidLoad() {
@@ -23,12 +25,13 @@ class AddEditEmojiTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        if let emoji = emoji{
+        if let emoji = emoji{ // check if emoji has a value
             symbolTextField.text = emoji.symbol
             nameTextField.text = emoji.name
             descriptionTextField.text = emoji.description
             usageTextField.text = emoji.usage
         }
+        updateSaveButtonState()
     }
 
     // MARK: - Table view data source
@@ -86,7 +89,12 @@ class AddEditEmojiTableViewController: UITableViewController {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
+     
+    
     */
+     
+     
+    
 
     
     // MARK: - Navigation
@@ -97,6 +105,17 @@ class AddEditEmojiTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func updateSaveButtonState(){
+        let symbolText = symbolTextField.text ?? ""
+        let nameText = nameTextField
+        .text ?? ""
+        let descriptionText = descriptionTextField.text ?? ""
+        let usageText = usageTextField.text ?? ""
+        saveButton.isEnabled = !symbolText.isEmpty && !nameText.isEmpty && !descriptionText.isEmpty && !usageText.isEmpty
+    }
+    @IBAction func textEditingChanged(_ sender: UITextField){
+        updateSaveButtonState()
+    }
     
 
 }
