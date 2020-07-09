@@ -16,6 +16,16 @@ class EmojiTableTableViewController: UITableViewController {
         tableView.setEditing(!tableViewEditingMode, animated: true)// put your table in editing mode
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "EditEmoji"{
+        let indexPath = tableView.indexPathForSelectedRow!
+        let emoji = emojis[indexPath.row]
+        let navController = segue.destination as! UINavigationController
+        let addEditEmojiTableViewController = navController.topViewController as! AddEditEmojiTableViewController
+        
+        addEditEmojiTableViewController.emoji = emoji
+    }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +66,10 @@ class EmojiTableTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //change gray color of cell
+    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //change gray color of cell
         let emoji = emojis[indexPath.row]
         print("\(emoji.symbol) \(indexPath) ")
-    }
+    }*/
  
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath){ // remove the data within emojis at fromIndexPath.row
         
@@ -68,13 +78,23 @@ class EmojiTableTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {// to remove the delete indicator
-        return .none
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {//delete indicator
+        return .delete// there are 3 options
     }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) { //takes in an array of index paths to delete
+        if editingStyle == .delete{
+            emojis.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)// type animations
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {//refresh data
         tableView.reloadData()
     }
     var emojis: [Emoji] = [Emoji(symbol: "😀", name: "Grinning Face", description: " A typicaly smiley face", usage: "happimess"),Emoji(symbol: "🤨", name: "confused Face", description: "A confuded, puzzled face", usage: "unsure what to think displeasure"),Emoji(symbol: "😍", name: "Heart eyes", description: "A smiley face with heart for eyes", usage: "love of something;attractive"),Emoji(symbol: "👮‍♀️", name: "Police officer", description: "A police officer wearing a blue cap with a gold badge", usage: "person of authority"),Emoji(symbol: "🐢", name: "Turtle", description: "A cute turtle", usage: "something slow"),Emoji(symbol: "🐘", name: "Elephant", description: "A gray elephant", usage: "good memory"),Emoji(symbol: "🍝", name: "Spaghetti", description: "A plate of spaghetti", usage: "spagheti"),Emoji(symbol: "🎲", name: "Die", description: "A single die", usage: "taking a risk, change,game"),Emoji(symbol: "⛺️", name: "Tent", description: "A small tent", usage: "camping"), Emoji(symbol: "📚", name: "Stack od books", description: "Three colores books stacked on each other", usage: "homework, stufyng"),Emoji(symbol: "💔", name: "Broken heart", description: "Ared, broken heart", usage: "extreme sadness"),Emoji(symbol: "💤", name: "Snore", description: "Three blue Z", usage: "Snore"), Emoji(symbol: "🏁", name: "Checker flag", description: "A black and white checkered flag", usage: "completion") ]
     
+    @IBAction func unwindToEmojiTableView (segue: UIStoryboardSegue ){
+        
+    }
     
 }

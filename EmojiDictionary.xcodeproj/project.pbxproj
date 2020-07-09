@@ -15,6 +15,7 @@
 		108452F024AD7E3E00927425 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108452EE24AD7E3E00927425 /* LaunchScreen.storyboard */; };
 		108452F824AD7F7700927425 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108452F724AD7F7700927425 /* Emoji.swift */; };
 		10E9C13724B107490085CC8F /* EmojiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9C13624B107490085CC8F /* EmojiTableViewCell.swift */; };
+		10E9C13924B167110085CC8F /* AddEditEmojiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9C13824B167110085CC8F /* AddEditEmojiTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		108452F124AD7E3E00927425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		108452F724AD7F7700927425 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		10E9C13624B107490085CC8F /* EmojiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTableViewCell.swift; sourceTree = "<group>"; };
+		10E9C13824B167110085CC8F /* AddEditEmojiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEmojiTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				108452F724AD7F7700927425 /* Emoji.swift */,
 				104C1D0A24AE2A75006B12C4 /* EmojiTableTableViewController.swift */,
 				10E9C13624B107490085CC8F /* EmojiTableViewCell.swift */,
+				10E9C13824B167110085CC8F /* AddEditEmojiTableViewController.swift */,
 			);
 			path = EmojiDictionary;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E9C13924B167110085CC8F /* AddEditEmojiTableViewController.swift in Sources */,
 				108452F824AD7F7700927425 /* Emoji.swift in Sources */,
 				104C1D0B24AE2A75006B12C4 /* EmojiTableTableViewController.swift in Sources */,
 				10E9C13724B107490085CC8F /* EmojiTableViewCell.swift in Sources */,
