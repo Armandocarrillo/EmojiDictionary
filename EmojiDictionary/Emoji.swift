@@ -8,7 +8,7 @@
 
 import Foundation
 
-class  Emoji{
+struct  Emoji: Codable{
     var symbol: String
     var name: String
     var description: String
@@ -20,4 +20,26 @@ class  Emoji{
         self.description = description
         self.usage = usage
     }
+
+    static func saveToFile(emojis: [Emoji]){
+        let propertyListEncoder = PropertyListEncoder()
+        let encodedEmoji = try? propertyListEncoder.encode(emojis)
+        try? encodedEmoji?.write(to: Emoji.ArchiveURL(), options: .noFileProtection)
+        
+    }
+    static func loadFromFile() -> [Emoji]{
+        let propertyListDecoder = PropertyListDecoder()
+        if let retrievedEmojiData = try? Data(contentsOf: Emoji.ArchiveURL()),
+            let decodedEmoji = try? propertyListDecoder.decode(Array<Emoji>.self, from: retrievedEmojiData){
+            print(decodedEmoji)
+        }
+        return []
+    }
+    static func ArchiveURL() -> URL{
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent("emoji_test").appendingPathExtension("plist")
+        return archiveURL
+        
+    }
+
 }
